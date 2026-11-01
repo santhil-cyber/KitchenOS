@@ -1,103 +1,88 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import Link from "next/link";
+import { ArrowRight, Sparkles, ChefHat, Flame, Clock } from "lucide-react";
+import { EquipmentGrid } from "@/components/EquipmentGrid";
+import { TimeSlider } from "@/components/TimeSlider";
+import { useKitchenStore } from "@/store/kitchen-store";
+
+export default function HomePage() {
+  const profile = useKitchenStore((s) => s.profile);
+
+  const totalSelected =
+    profile.heat_sources.length +
+    profile.cookware.length +
+    profile.appliances.length +
+    profile.basic_tools.length;
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+      {/* Hero Header */}
+      <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+        <div className="inline-flex items-center gap-2 rounded-full bg-orange-500/10 border border-orange-500/20 px-3.5 py-1 text-xs font-semibold text-orange-600 dark:text-orange-400 mb-4">
+          <Sparkles className="h-3.5 w-3.5" />
+          <span>Equipment-Aware Computational Gastronomy</span>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-foreground leading-[1.15]">
+          Your Kitchen, <span className="bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">Your Rules.</span>
+        </h1>
+
+        <p className="mt-4 text-base sm:text-lg text-muted-foreground leading-relaxed">
+          Most recipes assume you own an oven, a 4-burner stove, and a blender.
+          KitchenOS scans your actual pots, induction, and utensils, then automatically adapts 
+          world recipes from <strong>RecipeDB</strong> and <strong>FlavorDB</strong> to fit what you actually have.
+        </p>
+
+        {/* Quick Stat Pill */}
+        <div className="mt-6 inline-flex flex-wrap items-center justify-center gap-3 text-xs text-muted-foreground">
+          <span className="flex items-center gap-1.5 rounded-full bg-secondary px-3 py-1 font-medium">
+            <Flame className="h-3.5 w-3.5 text-orange-500" />
+            {profile.heat_sources.length} Heat Source{profile.heat_sources.length !== 1 ? "s" : ""}
+          </span>
+          <span className="flex items-center gap-1.5 rounded-full bg-secondary px-3 py-1 font-medium">
+            <ChefHat className="h-3.5 w-3.5 text-amber-500" />
+            {profile.cookware.length} Pot/Pan{profile.cookware.length !== 1 ? "s" : ""}
+          </span>
+          <span className="flex items-center gap-1.5 rounded-full bg-secondary px-3 py-1 font-medium">
+            <Clock className="h-3.5 w-3.5 text-blue-500" />
+            Max {profile.max_time_minutes} min
+          </span>
+        </div>
+      </div>
+
+      {/* Main Grid: Left side Time + Navigation, Right side Equipment */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* Left Column: Constraints & Fast Action */}
+        <div className="lg:col-span-1 space-y-6">
+          <div className="sticky top-24 space-y-6">
+            <TimeSlider />
+
+            {/* Launch Search Card */}
+            <div className="rounded-2xl border border-orange-500/30 bg-gradient-to-br from-orange-500/10 via-card to-background p-6 shadow-sm">
+              <h3 className="font-bold text-lg text-foreground mb-1">
+                Ready to find recipes?
+              </h3>
+              <p className="text-xs text-muted-foreground mb-5 leading-relaxed">
+                KitchenOS will query RecipeDB, calculate equipment match scores, and rewrite preparation steps for your setup.
+              </p>
+
+              <Link
+                href="/recipes"
+                className="w-full flex items-center justify-center gap-2 rounded-xl bg-orange-600 px-5 py-3.5 font-bold text-sm text-white shadow-md shadow-orange-500/20 hover:bg-orange-700 transition"
+              >
+                <span>Find Recipes ({totalSelected} tools selected)</span>
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Column: Interactive Equipment Selector */}
+        <div className="lg:col-span-2">
+          <EquipmentGrid />
+        </div>
+      </div>
     </div>
   );
 }

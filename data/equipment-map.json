@@ -1,0 +1,87 @@
+{
+  "bake": {
+    "requires": ["oven"],
+    "alternatives": ["microwave", "air_fryer", "pan"],
+    "description": "Dry heat cooking typically done in an oven; can be adapted via covered heavy pan on low heat or microwave convection."
+  },
+  "boil": {
+    "requires": ["pot"],
+    "alternatives": ["saucepan", "electric_kettle", "microwave"],
+    "description": "Submerging food in heated water or broth."
+  },
+  "simmer": {
+    "requires": ["pot"],
+    "alternatives": ["saucepan", "pan"],
+    "description": "Gentle boiling under low heat."
+  },
+  "fry": {
+    "requires": ["pan"],
+    "alternatives": ["wok", "air_fryer"],
+    "description": "Cooking food in hot oil or fat."
+  },
+  "deep_fry": {
+    "requires": ["deep_pot"],
+    "alternatives": ["pan", "wok", "air_fryer"],
+    "description": "Submerging food entirely in boiling oil; can be substituted with shallow-pan frying."
+  },
+  "saute": {
+    "requires": ["pan"],
+    "alternatives": ["wok", "pot"],
+    "description": "Cooking food rapidly in a small amount of oil over direct heat."
+  },
+  "stir_fry": {
+    "requires": ["wok"],
+    "alternatives": ["pan"],
+    "description": "Rapid high-heat tossing of ingredients."
+  },
+  "grill": {
+    "requires": ["oven"],
+    "alternatives": ["pan", "air_fryer"],
+    "description": "Dry radiant heat with char marks; simulated by cast iron or high-heat pan searing."
+  },
+  "roast": {
+    "requires": ["oven"],
+    "alternatives": ["pan", "air_fryer"],
+    "description": "Dry heat roasting; can be approximated by slow dry-pan roasting or air-fryer."
+  },
+  "steam": {
+    "requires": ["steamer"],
+    "alternatives": ["pot", "colander", "microwave"],
+    "description": "Cooking with steam vapor; approximated with a bowl/plate inverted over boiling water in a covered pot."
+  },
+  "pressure_cook": {
+    "requires": ["pressure_cooker"],
+    "alternatives": ["pot", "saucepan"],
+    "description": "High pressure sealed cooking; can be substituted with extended slow simmering in a covered pot."
+  },
+  "blend": {
+    "requires": ["blender"],
+    "alternatives": ["food_processor", "whisk", "spatula"],
+    "description": "Liquefying or pureeing; can be substituted by fork mashing or grinding."
+  },
+  "puree": {
+    "requires": ["blender"],
+    "alternatives": ["food_processor", "spatula"],
+    "description": "Grinding into smooth paste."
+  },
+  "toast": {
+    "requires": ["toaster"],
+    "alternatives": ["pan", "oven"],
+    "description": "Browning surfaces using radiant heat; easily replicated on a dry hot pan."
+  },
+  "whisk": {
+    "requires": ["whisk"],
+    "alternatives": ["spoon", "spatula"],
+    "description": "Beating liquid or batter."
+  },
+  "chop": {
+    "requires": ["knife", "cutting_board"],
+    "alternatives": ["food_processor"],
+    "description": "Cutting ingredients into smaller pieces."
+  },
+  "drain": {
+    "requires": ["colander"],
+    "alternatives": ["pan", "pot", "spoon"],
+    "description": "Separating solids from boiling liquids; can be performed using pot lid cracked open."
+  }
+}

@@ -1,0 +1,101 @@
+[
+  {
+    "missing_equipment": "oven",
+    "original_method": "bake",
+    "substitute_method": "stovetop_covered_pan",
+    "required_equipment": ["pan"],
+    "instruction_template": "Place in a heavy pan, cover with a tight-fitting lid, and cook on low heat for {time} min. Rotate occasionally for uniform heat distribution.",
+    "time_multiplier": 1.25,
+    "time_flat_minutes": 5,
+    "flavor_impact": "minor_loss",
+    "flavor_note": "Maillard crust will form mostly on the contact side rather than top surface."
+  },
+  {
+    "missing_equipment": "oven",
+    "original_method": "roast",
+    "substitute_method": "dry_pan_sear",
+    "required_equipment": ["pan"],
+    "instruction_template": "Heat a dry or lightly greased pan over medium-low heat. Cook for {time} min, turning frequently until tender and caramelized.",
+    "time_multiplier": 1.1,
+    "time_flat_minutes": 2,
+    "flavor_impact": "preserved",
+    "flavor_note": "Direct conductive heat concentrates caramelization and sugar breakdown similarly to roasting."
+  },
+  {
+    "missing_equipment": "blender",
+    "original_method": "blend",
+    "substitute_method": "fork_mash",
+    "required_equipment": ["spatula"],
+    "instruction_template": "Transfer to a bowl and mash vigorously with a fork or back of a spatula for 3-4 minutes until homogenous and smooth.",
+    "time_multiplier": 1.0,
+    "time_flat_minutes": 3,
+    "flavor_impact": "preserved",
+    "flavor_note": "Aromatic volatile extraction is unaffected; rustic texture with slightly coarser mouthfeel."
+  },
+  {
+    "missing_equipment": "deep_pot",
+    "original_method": "deep_fry",
+    "substitute_method": "shallow_pan_fry",
+    "required_equipment": ["pan"],
+    "instruction_template": "Heat 1.5 cm of cooking oil in your pan over medium heat. Fry {time} min on each side until crisp and golden brown.",
+    "time_multiplier": 1.1,
+    "time_flat_minutes": 0,
+    "flavor_impact": "preserved",
+    "flavor_note": "Retains same crispy lipid-bound flavor compound dissolution; requires halfway flip."
+  },
+  {
+    "missing_equipment": "pressure_cooker",
+    "original_method": "pressure_cook",
+    "substitute_method": "slow_simmer_pot",
+    "required_equipment": ["pot"],
+    "instruction_template": "Bring to a rolling boil in your pot with extra 100ml water, cover tightly with lid, and simmer on gentle heat for {time} min until completely tender.",
+    "time_multiplier": 2.2,
+    "time_flat_minutes": 15,
+    "flavor_impact": "preserved",
+    "flavor_note": "Slower hydrolytic extraction develops richer umami depth over extended simmering time."
+  },
+  {
+    "missing_equipment": "toaster",
+    "original_method": "toast",
+    "substitute_method": "dry_pan_toast",
+    "required_equipment": ["pan"],
+    "instruction_template": "Heat a dry frying pan on medium heat. Toast for 2 minutes per side until golden and crunchy.",
+    "time_multiplier": 1.0,
+    "time_flat_minutes": 1,
+    "flavor_impact": "preserved",
+    "flavor_note": "Crisp surface contact creates identical roasted pyrazine bread aroma notes."
+  },
+  {
+    "missing_equipment": "steamer",
+    "original_method": "steam",
+    "substitute_method": "elevated_plate_in_pot",
+    "required_equipment": ["pot"],
+    "instruction_template": "Add 2 cm of water to your pot. Place a small heat-safe bowl/plate inside to keep food elevated, cover with lid, and steam on medium heat for {time} min.",
+    "time_multiplier": 1.0,
+    "time_flat_minutes": 2,
+    "flavor_impact": "preserved",
+    "flavor_note": "Steam condensation maintains water-soluble nutrients and clean aromatic integrity."
+  },
+  {
+    "missing_equipment": "colander",
+    "original_method": "drain",
+    "substitute_method": "cracked_lid_drain",
+    "required_equipment": ["pot"],
+    "instruction_template": "Cover the pot with its lid leaving a 5mm slit open at the edge. Carefully pour off hot liquid over the sink while holding the lid firmly.",
+    "time_multiplier": 1.0,
+    "time_flat_minutes": 0,
+    "flavor_impact": "preserved",
+    "flavor_note": "No effect on flavor."
+  },
+  {
+    "missing_equipment": "wok",
+    "original_method": "stir_fry",
+    "substitute_method": "high_heat_pan",
+    "required_equipment": ["pan"],
+    "instruction_template": "Pre-heat your frying pan on maximum heat until smoking hot. Add oil and toss ingredients rapidly in small batches for {time} min.",
+    "time_multiplier": 1.1,
+    "time_flat_minutes": 1,
+    "flavor_impact": "minor_loss",
+    "flavor_note": "Simulates wok-hei through high surface contact heat; keep portions small to prevent boiling."
+  }
+]

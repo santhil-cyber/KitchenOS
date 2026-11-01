@@ -1,0 +1,42 @@
+[
+  {
+    "id": "college_dorm",
+    "name": "Hostel / Dorm Setup",
+    "description": "Just an induction cooktop, 1 frying pan, and a pocket knife. 15-20 min limit.",
+    "heat_sources": ["induction"],
+    "cookware": ["pan"],
+    "appliances": [],
+    "basic_tools": ["knife", "cutting_board", "spatula", "spoon"],
+    "max_time_minutes": 20
+  },
+  {
+    "id": "pg_studio",
+    "name": "PG Room Setup",
+    "description": "Microwave + Electric kettle + small saucepan. Fast meals, no gas stove.",
+    "heat_sources": ["microwave", "electric_kettle"],
+    "cookware": ["saucepan"],
+    "appliances": [],
+    "basic_tools": ["knife", "spoon", "cutting_board"],
+    "max_time_minutes": 25
+  },
+  {
+    "id": "single_pan_warrior",
+    "name": "One-Pan Wonder",
+    "description": "1 single pan on gas stove or induction. Zero dishes to wash afterwards.",
+    "heat_sources": ["gas_stove", "induction"],
+    "cookware": ["pan"],
+    "appliances": [],
+    "basic_tools": ["knife", "cutting_board", "spatula"],
+    "max_time_minutes": 30
+  },
+  {
+    "id": "equipped_home",
+    "name": "Standard Kitchen",
+    "description": "Gas stove, oven, microwave, blender, multiple pots and pans.",
+    "heat_sources": ["gas_stove", "microwave", "oven"],
+    "cookware": ["pan", "pot", "saucepan", "pressure_cooker", "baking_tray", "colander"],
+    "appliances": ["blender", "toaster"],
+    "basic_tools": ["knife", "cutting_board", "spatula", "whisk", "spoon", "peeler"],
+    "max_time_minutes": 60
+  }
+]
