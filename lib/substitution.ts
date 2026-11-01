@@ -37,3 +37,4 @@ export function findSubstitutionByMethod(
 export function getAllSubstitutionRules(): SubstitutionRule[] {
   return rules;
 }
+

@@ -88,6 +88,14 @@ export interface RecipeStep {
   utensils?: string[];
 }
 
+export interface RecipeNutrition {
+  calories: number;
+  protein_g: number;
+  carbs_g: number;
+  fat_g: number;
+  fiber_g?: number;
+}
+
 export interface Recipe {
   id: string;
   title: string;
@@ -95,6 +103,7 @@ export interface Recipe {
   region?: string;
   total_time: number;
   calories?: number;
+  nutrition?: RecipeNutrition;
   image_url?: string;
   ingredients: (string | RecipeIngredient)[];
   processes: string[];
@@ -128,3 +137,4 @@ export interface ScoredRecipe {
   tier: "perfect" | "doable" | "incompatible"; // perfect: 100%, doable: 70-99%, incompatible: <70%
   adapted_instructions?: AdaptedStep[];
 }
+

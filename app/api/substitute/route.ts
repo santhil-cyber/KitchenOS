@@ -12,3 +12,4 @@ export async function GET(req: NextRequest) {
   const result = await getIngredientSubstitutes(ingredient);
   return NextResponse.json({ substitute: result });
 }
+

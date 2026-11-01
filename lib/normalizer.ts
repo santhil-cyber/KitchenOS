@@ -24,3 +24,4 @@ export function normalizeEquipment(name: string): string {
   // Strip non-alphanumeric and replace spaces
   return cleaned.replace(/[^a-z0-9]+/g, "_");
 }
+

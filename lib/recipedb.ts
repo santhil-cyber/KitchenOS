@@ -72,3 +72,4 @@ export async function getRecipeById(id: string): Promise<Recipe | null> {
   const all = await fetchRecipes();
   return all.find((r) => r.id === id) || null;
 }
+

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Clock, Flame, ChevronRight, Check, AlertCircle, Sparkles } from "lucide-react";
 import { ScoredRecipe } from "@/types/kitchen";
 import { CompatibilityBadge } from "./CompatibilityBadge";
+import { NutritionDonut } from "./NutritionDonut";
 
 interface RecipeCardProps {
   scoredRecipe: ScoredRecipe;
@@ -60,7 +61,7 @@ export function RecipeCard({ scoredRecipe }: RecipeCardProps) {
         </h3>
 
         {/* Time and equipment readiness indicator */}
-        <div className="flex flex-wrap items-center gap-2 mb-4">
+        <div className="flex flex-wrap items-center gap-2 mb-3">
           <div className={`flex items-center gap-1 text-xs px-2.5 py-1 rounded-md font-medium ${
             is_time_compatible
               ? "bg-secondary text-secondary-foreground"
@@ -76,7 +77,7 @@ export function RecipeCard({ scoredRecipe }: RecipeCardProps) {
           </div>
 
           {/* Processes preview */}
-          {recipe.processes.slice(0, 3).map((proc) => (
+          {recipe.processes.slice(0, 2).map((proc) => (
             <span
               key={proc}
               className="text-[11px] bg-secondary/60 text-muted-foreground px-2 py-0.5 rounded capitalize"
@@ -85,6 +86,13 @@ export function RecipeCard({ scoredRecipe }: RecipeCardProps) {
             </span>
           ))}
         </div>
+
+        {/* Compact Nutrition Donut */}
+        {recipe.nutrition && (
+          <div className="mb-3 p-2.5 rounded-xl border border-border/50 bg-secondary/20">
+            <NutritionDonut nutrition={recipe.nutrition} compact />
+          </div>
+        )}
 
         {/* Substitutions or Tool Match details */}
         {substitutions.length > 0 ? (
@@ -114,7 +122,7 @@ export function RecipeCard({ scoredRecipe }: RecipeCardProps) {
             href={`/recipe/${recipe.id}`}
             className="inline-flex items-center gap-1 rounded-lg bg-orange-600 px-3.5 py-1.5 text-xs font-semibold text-white shadow-xs hover:bg-orange-700 transition"
           >
-            <span>View Adapted Recipe</span>
+            <span>View Recipe</span>
             <ChevronRight className="h-3.5 w-3.5" />
           </Link>
         </div>

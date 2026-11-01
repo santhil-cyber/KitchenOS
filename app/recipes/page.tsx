@@ -13,6 +13,8 @@ import {
 import { useKitchenStore } from "@/store/kitchen-store";
 import { ScoredRecipe } from "@/types/kitchen";
 import { RecipeCard } from "@/components/RecipeCard";
+import { RecipeCardSkeleton } from "@/components/RecipeCardSkeleton";
+import { EquipmentAdvisor } from "@/components/EquipmentAdvisor";
 
 const cuisines = [
   "all",
@@ -177,13 +179,24 @@ export default function RecipesPage() {
         </div>
       </div>
 
+      {/* Equipment Upgrade Advisor */}
+      {!loading && recipes.length > 0 && (
+        <div className="mb-8">
+          <EquipmentAdvisor scoredRecipes={recipes} />
+        </div>
+      )}
+
       {/* Results Display */}
       {loading ? (
-        <div className="flex flex-col items-center justify-center py-20 text-center">
-          <div className="h-10 w-10 animate-spin rounded-full border-4 border-orange-500 border-t-transparent" />
-          <p className="mt-4 text-sm font-medium text-muted-foreground">
-            Calculating equipment compatibility matrix via RecipeDB...
-          </p>
+        <div>
+          <div className="mb-4 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+            Scoring recipes across equipment & thermal constraints...
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <RecipeCardSkeleton key={i} />
+            ))}
+          </div>
         </div>
       ) : displayedRecipes.length === 0 ? (
         <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-border py-16 text-center">

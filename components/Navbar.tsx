@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Flame, ChefHat, Sparkles } from "lucide-react";
 import { useKitchenStore } from "@/store/kitchen-store";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function Navbar() {
   const pathname = usePathname();
@@ -31,40 +32,46 @@ export function Navbar() {
               </span>
             </div>
             <p className="text-xs text-muted-foreground hidden sm:block">
-              RecipeDB + FlavorDB Computational Engine
+              RecipeDB + FlavorDB Computational Gastronomy
             </p>
           </div>
         </Link>
 
-        {/* Navigation */}
-        <nav className="flex items-center gap-1 sm:gap-2">
-          <Link
-            href="/"
-            className={`flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium transition ${
-              pathname === "/"
-                ? "bg-secondary text-foreground"
-                : "text-muted-foreground hover:bg-secondary/60 hover:text-foreground"
-            }`}
-          >
-            <ChefHat className="h-4 w-4" />
-            <span>My Kitchen</span>
-            <span className="ml-1 rounded-full bg-primary/10 px-1.5 py-0.2 text-xs font-semibold text-primary">
-              {totalEquipmentCount}
-            </span>
-          </Link>
+        {/* Navigation & Controls */}
+        <div className="flex items-center gap-2 sm:gap-3">
+          <nav className="flex items-center gap-1 sm:gap-2">
+            <Link
+              href="/"
+              className={`flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium transition ${
+                pathname === "/"
+                  ? "bg-secondary text-foreground"
+                  : "text-muted-foreground hover:bg-secondary/60 hover:text-foreground"
+              }`}
+            >
+              <ChefHat className="h-4 w-4" />
+              <span>My Kitchen</span>
+              <span className="ml-1 rounded-full bg-primary/10 px-1.5 py-0.2 text-xs font-semibold text-primary">
+                {totalEquipmentCount}
+              </span>
+            </Link>
 
-          <Link
-            href="/recipes"
-            className={`flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium transition ${
-              pathname.startsWith("/recipes")
-                ? "bg-secondary text-foreground"
-                : "text-muted-foreground hover:bg-secondary/60 hover:text-foreground"
-            }`}
-          >
-            <Sparkles className="h-4 w-4 text-amber-500" />
-            <span>Matched Recipes</span>
-          </Link>
-        </nav>
+            <Link
+              href="/recipes"
+              className={`flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium transition ${
+                pathname.startsWith("/recipes")
+                  ? "bg-secondary text-foreground"
+                  : "text-muted-foreground hover:bg-secondary/60 hover:text-foreground"
+              }`}
+            >
+              <Sparkles className="h-4 w-4 text-amber-500" />
+              <span>Recipes</span>
+            </Link>
+          </nav>
+
+          <div className="h-5 w-[1px] bg-border/60 mx-1 hidden sm:block" />
+          
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   );
