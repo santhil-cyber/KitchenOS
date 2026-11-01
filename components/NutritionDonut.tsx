@@ -24,8 +24,8 @@ export function NutritionDonut({ nutrition, compact = false }: NutritionDonutPro
   const fatPct = Math.max(100 - proteinPct - carbsPct, 0);
 
   // SVG Donut metrics
-  const radius = compact ? 26 : 42;
-  const strokeWidth = compact ? 7 : 10;
+  const radius = compact ? 26 : 38;
+  const strokeWidth = compact ? 7 : 9;
   const circumference = 2 * Math.PI * radius;
 
   const proteinStroke = (proteinPct / 100) * circumference;
@@ -37,13 +37,13 @@ export function NutritionDonut({ nutrition, compact = false }: NutritionDonutPro
 
   if (compact) {
     return (
-      <div className="flex items-center gap-3">
-        <div className="relative flex items-center justify-center">
-          <svg width="68" height="68" viewBox="0 0 68 68" className="-rotate-90">
+      <div className="flex items-center gap-3 overflow-hidden">
+        <div className="relative flex items-center justify-center shrink-0">
+          <svg width="64" height="64" viewBox="0 0 64 64" className="-rotate-90">
             {/* Background ring */}
             <circle
-              cx="34"
-              cy="34"
+              cx="32"
+              cy="32"
               r={radius}
               fill="transparent"
               stroke="currentColor"
@@ -52,8 +52,8 @@ export function NutritionDonut({ nutrition, compact = false }: NutritionDonutPro
             />
             {/* Protein (Blue) */}
             <circle
-              cx="34"
-              cy="34"
+              cx="32"
+              cy="32"
               r={radius}
               fill="transparent"
               stroke="#3b82f6"
@@ -63,8 +63,8 @@ export function NutritionDonut({ nutrition, compact = false }: NutritionDonutPro
             />
             {/* Carbs (Amber) */}
             <circle
-              cx="34"
-              cy="34"
+              cx="32"
+              cy="32"
               r={radius}
               fill="transparent"
               stroke="#f59e0b"
@@ -74,8 +74,8 @@ export function NutritionDonut({ nutrition, compact = false }: NutritionDonutPro
             />
             {/* Fat (Rose) */}
             <circle
-              cx="34"
-              cy="34"
+              cx="32"
+              cy="32"
               r={radius}
               fill="transparent"
               stroke="#f43f5e"
@@ -89,21 +89,27 @@ export function NutritionDonut({ nutrition, compact = false }: NutritionDonutPro
           </div>
         </div>
 
-        <div className="text-[11px] space-y-0.5">
-          <div className="flex items-center gap-1.5">
-            <span className="h-2 w-2 rounded-full bg-blue-500" />
-            <span className="text-muted-foreground">P:</span>
-            <span className="font-semibold">{protein_g}g</span>
+        <div className="text-[11px] space-y-0.5 min-w-0 flex-1">
+          <div className="flex items-center justify-between gap-1">
+            <span className="flex items-center gap-1 text-muted-foreground">
+              <span className="h-2 w-2 rounded-full bg-blue-500 shrink-0" />
+              <span>Protein</span>
+            </span>
+            <span className="font-semibold text-foreground">{protein_g}g</span>
           </div>
-          <div className="flex items-center gap-1.5">
-            <span className="h-2 w-2 rounded-full bg-amber-500" />
-            <span className="text-muted-foreground">C:</span>
-            <span className="font-semibold">{carbs_g}g</span>
+          <div className="flex items-center justify-between gap-1">
+            <span className="flex items-center gap-1 text-muted-foreground">
+              <span className="h-2 w-2 rounded-full bg-amber-500 shrink-0" />
+              <span>Carbs</span>
+            </span>
+            <span className="font-semibold text-foreground">{carbs_g}g</span>
           </div>
-          <div className="flex items-center gap-1.5">
-            <span className="h-2 w-2 rounded-full bg-rose-500" />
-            <span className="text-muted-foreground">F:</span>
-            <span className="font-semibold">{fat_g}g</span>
+          <div className="flex items-center justify-between gap-1">
+            <span className="flex items-center gap-1 text-muted-foreground">
+              <span className="h-2 w-2 rounded-full bg-rose-500 shrink-0" />
+              <span>Fat</span>
+            </span>
+            <span className="font-semibold text-foreground">{fat_g}g</span>
           </div>
         </div>
       </div>
@@ -111,27 +117,30 @@ export function NutritionDonut({ nutrition, compact = false }: NutritionDonutPro
   }
 
   return (
-    <div className="rounded-2xl border border-border/60 bg-card p-5 shadow-xs">
-      <div className="flex items-center justify-between mb-4">
+    <div className="rounded-2xl border border-border/60 bg-card p-4 sm:p-5 shadow-xs overflow-hidden">
+      {/* Header */}
+      <div className="flex items-center justify-between mb-3">
         <div>
-          <h3 className="font-bold text-base">Macronutrient Distribution</h3>
-          <p className="text-xs text-muted-foreground">
-            Estimated computational gastronomy breakdown per serving
+          <h3 className="font-bold text-sm sm:text-base text-foreground">
+            Macronutrient Distribution
+          </h3>
+          <p className="text-[11px] text-muted-foreground">
+            Computational breakdown per serving
           </p>
         </div>
-        <div className="text-right">
-          <span className="text-2xl font-extrabold text-foreground">{calories}</span>
+        <div className="text-right shrink-0">
+          <span className="text-xl sm:text-2xl font-extrabold text-foreground">{calories}</span>
           <span className="text-xs font-semibold text-muted-foreground ml-1">kcal</span>
         </div>
       </div>
 
-      <div className="flex flex-col sm:flex-row items-center gap-6">
-        {/* SVG Donut */}
-        <div className="relative flex items-center justify-center shrink-0">
-          <svg width="110" height="110" viewBox="0 0 110 110" className="-rotate-90">
+      {/* Donut Chart (Centered) */}
+      <div className="flex justify-center my-3">
+        <div className="relative flex items-center justify-center">
+          <svg width="100" height="100" viewBox="0 0 100 100" className="-rotate-90">
             <circle
-              cx="55"
-              cy="55"
+              cx="50"
+              cy="50"
               r={radius}
               fill="transparent"
               stroke="currentColor"
@@ -140,8 +149,8 @@ export function NutritionDonut({ nutrition, compact = false }: NutritionDonutPro
             />
             {/* Protein */}
             <circle
-              cx="55"
-              cy="55"
+              cx="50"
+              cy="50"
               r={radius}
               fill="transparent"
               stroke="#3b82f6"
@@ -152,8 +161,8 @@ export function NutritionDonut({ nutrition, compact = false }: NutritionDonutPro
             />
             {/* Carbs */}
             <circle
-              cx="55"
-              cy="55"
+              cx="50"
+              cy="50"
               r={radius}
               fill="transparent"
               stroke="#f59e0b"
@@ -164,8 +173,8 @@ export function NutritionDonut({ nutrition, compact = false }: NutritionDonutPro
             />
             {/* Fat */}
             <circle
-              cx="55"
-              cy="55"
+              cx="50"
+              cy="50"
               r={radius}
               fill="transparent"
               stroke="#f43f5e"
@@ -176,48 +185,58 @@ export function NutritionDonut({ nutrition, compact = false }: NutritionDonutPro
             />
           </svg>
           <div className="absolute text-center">
-            <div className="text-xs font-semibold text-muted-foreground">Energy</div>
+            <div className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wider">Energy</div>
             <div className="text-sm font-bold text-foreground">{calories}</div>
           </div>
         </div>
+      </div>
 
-        {/* Legend */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 w-full">
-          <div className="rounded-xl border border-blue-500/20 bg-blue-500/5 p-3">
-            <div className="flex items-center gap-1.5 mb-1">
-              <span className="h-2.5 w-2.5 rounded-full bg-blue-500" />
-              <span className="text-xs font-semibold text-blue-600 dark:text-blue-400">Protein</span>
-            </div>
-            <div className="text-lg font-bold text-foreground">{protein_g}g</div>
-            <div className="text-[11px] text-muted-foreground">{proteinPct}% of cals</div>
+      {/* 3-Column Macro Grid (fits in any narrow sidebar or mobile view) */}
+      <div className="grid grid-cols-3 gap-2 w-full mt-3">
+        {/* Protein */}
+        <div className="rounded-xl border border-blue-500/20 bg-blue-500/5 p-2 text-center flex flex-col justify-between">
+          <div className="flex items-center justify-center gap-1 mb-0.5">
+            <span className="h-2 w-2 rounded-full bg-blue-500 shrink-0" />
+            <span className="text-[11px] font-semibold text-blue-600 dark:text-blue-400 truncate">
+              Protein
+            </span>
           </div>
+          <div className="text-base font-extrabold text-foreground">{protein_g}g</div>
+          <div className="text-[10px] text-muted-foreground">{proteinPct}% of cals</div>
+        </div>
 
-          <div className="rounded-xl border border-amber-500/20 bg-amber-500/5 p-3">
-            <div className="flex items-center gap-1.5 mb-1">
-              <span className="h-2.5 w-2.5 rounded-full bg-amber-500" />
-              <span className="text-xs font-semibold text-amber-600 dark:text-amber-400">Carbs</span>
-            </div>
-            <div className="text-lg font-bold text-foreground">{carbs_g}g</div>
-            <div className="text-[11px] text-muted-foreground">{carbsPct}% of cals</div>
+        {/* Carbs */}
+        <div className="rounded-xl border border-amber-500/20 bg-amber-500/5 p-2 text-center flex flex-col justify-between">
+          <div className="flex items-center justify-center gap-1 mb-0.5">
+            <span className="h-2 w-2 rounded-full bg-amber-500 shrink-0" />
+            <span className="text-[11px] font-semibold text-amber-600 dark:text-amber-400 truncate">
+              Carbs
+            </span>
           </div>
+          <div className="text-base font-extrabold text-foreground">{carbs_g}g</div>
+          <div className="text-[10px] text-muted-foreground">{carbsPct}% of cals</div>
+        </div>
 
-          <div className="rounded-xl border border-rose-500/20 bg-rose-500/5 p-3">
-            <div className="flex items-center gap-1.5 mb-1">
-              <span className="h-2.5 w-2.5 rounded-full bg-rose-500" />
-              <span className="text-xs font-semibold text-rose-600 dark:text-rose-400">Fats</span>
-            </div>
-            <div className="text-lg font-bold text-foreground">{fat_g}g</div>
-            <div className="text-[11px] text-muted-foreground">{fatPct}% of cals</div>
+        {/* Fat */}
+        <div className="rounded-xl border border-rose-500/20 bg-rose-500/5 p-2 text-center flex flex-col justify-between">
+          <div className="flex items-center justify-center gap-1 mb-0.5">
+            <span className="h-2 w-2 rounded-full bg-rose-500 shrink-0" />
+            <span className="text-[11px] font-semibold text-rose-600 dark:text-rose-400 truncate">
+              Fats
+            </span>
           </div>
-
-          {fiber_g !== undefined && (
-            <div className="col-span-2 sm:col-span-3 rounded-xl border border-border/50 bg-secondary/30 px-3 py-2 flex items-center justify-between text-xs">
-              <span className="text-muted-foreground">Dietary Fiber</span>
-              <span className="font-semibold text-foreground">{fiber_g}g</span>
-            </div>
-          )}
+          <div className="text-base font-extrabold text-foreground">{fat_g}g</div>
+          <div className="text-[10px] text-muted-foreground">{fatPct}% of cals</div>
         </div>
       </div>
+
+      {/* Dietary Fiber (if present) */}
+      {fiber_g !== undefined && (
+        <div className="mt-2.5 rounded-xl border border-border/50 bg-secondary/30 px-3 py-1.5 flex items-center justify-between text-xs">
+          <span className="text-muted-foreground">Dietary Fiber</span>
+          <span className="font-semibold text-foreground">{fiber_g}g</span>
+        </div>
+      )}
     </div>
   );
 }
